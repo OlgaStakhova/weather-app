@@ -9,6 +9,7 @@ import { prepareWeatherData } from './utils/prepareData';
 import { useDispatch, useSelector } from "react-redux";
 import { getWeatherList } from './store/store';
 import { WeatherList } from './components/WeatherList';
+import imageWeather from './images/weather-data.png';
 
 export const App: FC = () => {
   const [city, setCity] = useState('');
@@ -77,7 +78,7 @@ export const App: FC = () => {
         <WeatherList />
       </>
       : <img 
-          src="/weather-data.jpeg" 
+          src={imageWeather} 
           alt="weather-data"
           className='app-img'
         />}
