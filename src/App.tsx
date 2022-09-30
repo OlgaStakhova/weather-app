@@ -13,6 +13,7 @@ import imageWeather from './images/weather-data.png';
 
 export const App: FC = () => {
   const [city, setCity] = useState('');
+  const [cityShow, setCityShow] = useState('');
   const [comeCityId, setComeCityId] = useState('');
 
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ export const App: FC = () => {
 
   const handelChangeCity = (value: string) => {
     setCity(value);
+    setCityShow(value);
   }
 
   const handelSubmit = (event: FormEvent) => {
@@ -51,7 +53,7 @@ export const App: FC = () => {
 
   return (
     <div className="App">
-      <h1 className="title is-3">Wether in city</h1>
+      <h1 className="title is-3">Wether in city: {cityShow}</h1>
       <form
         onSubmit={handelSubmit}
         className="form"

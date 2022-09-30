@@ -12,7 +12,7 @@ export const WeatherList: FC = () => {
         && <table className="table">
           <thead>
             <tr>
-              <th>Data</th>
+              <th>Date</th>
               <th>Info</th>
               <th><abbr title="Max temp ºC">Max</abbr></th>
               <th><abbr title="Min temp ºC">Min</abbr></th>
