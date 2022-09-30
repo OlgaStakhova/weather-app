@@ -19,12 +19,13 @@ export const App: FC = () => {
   const weatherData = useSelector(getWeatherList);
 
   useEffect(() => {
-    console.log('asd', comeCityId)
     if (comeCityId) {
       getWeather(comeCityId)
         .then(response => {
-          const payload = prepareWeatherData(response.forecast);
-          dispatch(addAction(payload));
+          if(response?.forecast) {
+            const payload = prepareWeatherData(response.forecast);
+            dispatch(addAction(payload));
+          }
         })
         .catch(err => console.error(err));
     }
@@ -38,11 +39,10 @@ export const App: FC = () => {
     event.preventDefault();
     getCityID(city)
       .then(data => {
-        console.log(data.locations)
-        if (!data.locations.length) {
+        if (!data?.locations.length) {
           errorNotification('Input correct name city');
         }
-        const locationId = data.locations.length && data.locations[0].id;
+        const locationId = data?.locations.length && data.locations[0].id + '';
         locationId && setComeCityId(locationId);
       })
       .then(() => setCity(''))
@@ -53,12 +53,12 @@ export const App: FC = () => {
     <div className="App">
       <h1 className="title is-3">Wether in city</h1>
       <form
-        onChange={(event: any) => handelChangeCity(event.target.value)}
         onSubmit={handelSubmit}
         className="form"
       >
         <input
           className="input is-info"
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => handelChangeCity(event.target.value)}
           type="search"
           placeholder='Input your city'
           value={city}

@@ -2,17 +2,18 @@ import { FC, useEffect, useState } from "react";
 import ReactECharts from 'echarts-for-react';
 import { getWeatherChart } from "../store/store";
 import { useSelector } from "react-redux";
+import { OptionsChart } from "../types/OptionsChart";
 
 export const Chart: FC = () => {
   const weatherChartData = useSelector(getWeatherChart)
-  const [option, setOption] = useState<any>(null);
+  const [option, setOption] = useState<OptionsChart | null>(null);
 
   useEffect(() => {
     if (weatherChartData?.length) {
       const dates = weatherChartData.map(item => item.date);
       const temperature = weatherChartData.map(item => item.averageTemp);
 
-      const options = {
+      const options:OptionsChart = {
         title: {
           text: `Average temp for ${weatherChartData?.length} days`
         },

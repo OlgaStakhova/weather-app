@@ -1,4 +1,7 @@
-export const prepareWeatherData = (data: any[]): any => {
+import { WeatherItemResp } from "../types/ResponseType"
+import { Weather } from "../types/Weather"
+
+export const prepareWeatherData = (data: WeatherItemResp[]): Weather => {
 
     return {
         weatherList: data.map(item => {

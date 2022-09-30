@@ -25,7 +25,7 @@ export const WeatherList: FC = () => {
 
   <tbody>
  { weatherListData.map(item => (
-    <tr>
+    <tr key={item.date}>
       <td>{item.date}</td>
       <td>{item.symbolPhrase}</td>
       <td>{item.maxTemp}</td>
